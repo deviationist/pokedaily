@@ -18,6 +18,8 @@ export const pokemonQueries = {
       queryFn: async (): Promise<Pokemon> => {
         const pokemonId = Math.floor(Math.random() * 1025) + 1
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+        const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+        await delay(250); // Small pause to allow GUI to animate
         if (!response.ok) throw new Error('Failed to fetch pokemon')
         return await response.json()
       },
