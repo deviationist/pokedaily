@@ -193,13 +193,30 @@
           opacity: 0.6;
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        .ripple-circle,
+        .pokeball,
+        .branding,
+        .dot,
+        .initializing-text {
+          animation: none;
+        }
+
+        .branding {
+          opacity: 1;
+        }
+
+        .initializing-text {
+          opacity: 0.6;
+        }
+      }
     </style>
   </head>
   <body>
     <div id="root"></div>
 
     <!-- Boot Splash Screen -->
-    <div id="boot-splash">
+    <div id="boot-splash" aria-hidden="true">
       <!-- Ripple circles -->
       <div class="ripple-circle ripple-circle-1"></div>
       <div class="ripple-circle ripple-circle-2"></div>

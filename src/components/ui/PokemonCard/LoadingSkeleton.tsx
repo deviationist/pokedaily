@@ -5,7 +5,8 @@ interface PokemonCardSkeletonProps {
 export function LoadingSkeleton({ variant = 'large' }: PokemonCardSkeletonProps) {
   if (variant === 'small') {
     return (
-      <div className="relative bg-white rounded-3xl p-5 shadow-sm border border-gray-100 flex flex-col items-center overflow-hidden">
+      <div aria-busy="true" role="status" className="relative bg-white rounded-3xl p-5 shadow-sm border border-gray-100 flex flex-col items-center overflow-hidden">
+        <span className="sr-only">Loading Pokémon...</span>
         {/* Image skeleton */}
         <div className="w-24 h-24 mb-3 relative">
           <div className="w-full h-full bg-gray-200 rounded-full animate-pulse" />
@@ -24,7 +25,8 @@ export function LoadingSkeleton({ variant = 'large' }: PokemonCardSkeletonProps)
   }
 
   return (
-    <div className="w-full max-w-sm mx-auto bg-white rounded-[3rem] p-8 shadow-2xl border border-gray-100 relative overflow-hidden">
+    <div aria-busy="true" role="status" className="w-full max-w-sm mx-auto bg-white rounded-[3rem] p-8 shadow-2xl border border-gray-100 relative overflow-hidden">
+      <span className="sr-only">Loading Pokémon...</span>
       {/* Background blur */}
       <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-10 bg-gray-300" />
       
@@ -41,7 +43,7 @@ export function LoadingSkeleton({ variant = 'large' }: PokemonCardSkeletonProps)
         {/* Content */}
         <div className="flex-1 flex flex-col items-center justify-center py-6">
           {/* Image skeleton */}
-          <div className="w-full aspect-square relative mb-6 max-w-[318px]">
+          <div className="w-full aspect-square relative mb-6 max-w-[318px] max-h-[318px]">
             <div className="w-full h-full bg-gray-200 rounded-3xl animate-pulse" />
           </div>
 

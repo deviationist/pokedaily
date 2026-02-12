@@ -1,15 +1,15 @@
 import { Link, useLocation } from '@tanstack/react-router';
 import { cn } from '../ui/utils';
 
-export function NavBtn({ href, icon, label, count }: { href: string, icon: React.ReactNode, label: string, count?: number }) {
+export function NavButton({ href, icon, label, count }: { href: string, icon: React.ReactNode, label: string, count?: number }) {
   const { pathname } = useLocation();
   const active = href === pathname;
   return (
     <Link
       to={href}
       className={cn(
-        "flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-sm",
-        active ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+        "flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500",
+        active ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-700'
       )}
     >
       {icon}
@@ -23,14 +23,15 @@ export function NavBtn({ href, icon, label, count }: { href: string, icon: React
   );
 }
 
-export function MobileNavBtn({ href, icon, count }: { href: string, icon: React.ReactNode, count?: number }) {
+export function MobileNavButton({ href, icon, label, count }: { href: string, icon: React.ReactNode, label: string, count?: number }) {
   const { pathname } = useLocation();
   const active = href === pathname;
   return (
     <Link
       to={href}
+      aria-label={label}
       className={cn(
-        'relative p-4 rounded-full transition-all active:scale-90',
+        'relative p-4 rounded-full transition-all active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500',
         active ? 'bg-red-500 text-white shadow-lg shadow-red-200' : 'text-gray-400'
     )}
     >

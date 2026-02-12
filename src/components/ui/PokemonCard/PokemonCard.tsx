@@ -50,17 +50,18 @@ export function PokemonCard({
         <h3 className="capitalize text-sm font-bold text-gray-800 truncate w-full text-center">
           {pokemon.name}
         </h3>
-        <span className="text-[10px] text-gray-400 font-mono mb-3">#{pokemon.id.toString().padStart(3, '0')}</span>
+        <span className="text-[10px] text-gray-500 font-mono mb-3">#{pokemon.id.toString().padStart(3, '0')}</span>
         
-        <button 
+        <button
           onClick={(e) => {
             e.stopPropagation();
             onCatch?.(pokemon);
           }}
-          className={`w-full cursor-pointer py-2 rounded-xl flex items-center justify-center gap-2 transition-all ${
-            isCaught 
-              ? 'bg-red-50 text-red-500 hover:bg-red-100' 
-              : 'bg-gray-100 text-gray-400 hover:bg-red-500 hover:text-white group/btn'
+          aria-label={`${isCaught ? 'Release' : 'Catch'} ${pokemon.name}`}
+          className={`w-full cursor-pointer py-2 rounded-xl flex items-center justify-center gap-2 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 ${
+            isCaught
+              ? 'bg-red-50 text-red-500 hover:bg-red-100'
+              : 'bg-gray-100 text-gray-500 hover:bg-red-500 hover:text-white group/btn'
           }`}
         >
           {isCaught ? (
@@ -102,7 +103,7 @@ export function PokemonCard({
           <motion.div 
             animate={isCaught ? { scale: [1, 1.05, 1] } : {}}
             transition={{ duration: 0.5 }}
-            className="w-full aspect-square relative mb-6"
+            className="w-full aspect-square relative mb-6 max-w-[318px] max-h-[318px]"
           >
             <ImageWithFallback 
               src={imageUrl} 
@@ -122,11 +123,12 @@ export function PokemonCard({
 
           <h2 className="text-4xl font-black capitalize tracking-tight text-gray-900 mb-8">{pokemon.name}</h2>
           
-          <button 
+          <button
             onClick={() => onCatch?.(pokemon)}
-            className={`w-full py-5 cursor-pointer rounded-[2rem] flex items-center justify-center gap-3 transition-all transform active:scale-95 relative overflow-hidden group/catch ${
-              isCaught 
-                ? 'bg-gray-900 text-white' 
+            aria-label={`${isCaught ? 'Release' : 'Catch'} ${pokemon.name}`}
+            className={`w-full py-5 cursor-pointer rounded-[2rem] flex items-center justify-center gap-3 transition-all transform active:scale-95 relative overflow-hidden group/catch focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 ${
+              isCaught
+                ? 'bg-gray-900 text-white'
                 : 'bg-red-500 text-white shadow-xl shadow-red-200 hover:bg-red-600'
             }`}
           >
