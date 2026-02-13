@@ -7,6 +7,7 @@ export function NavButton({ href, icon, label, count }: { href: string, icon: Re
   return (
     <Link
       to={href}
+      preload="intent"
       className={cn(
         "flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500",
         active ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-700'
@@ -29,6 +30,7 @@ export function MobileNavButton({ href, icon, label, count }: { href: string, ic
   return (
     <Link
       to={href}
+      preload="intent"
       aria-label={label}
       className={cn(
         'relative p-4 rounded-full transition-all active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500',
